@@ -1,4 +1,5 @@
 import os
+import sys
 import mongoengine
 from mongoengine import Document, StringField, DateTimeField
 
@@ -26,11 +27,11 @@ def connect():
     envs = {"db": "MONGO_DB",
             "username": "MONGO_USERNAME",
             "password": "MONGO_PASSWORD"}
-    for key, env in ["MONGO_DB", "MONGO_USERNAME", "MONGO_PASSWORD"]:
+    for key, env in envs.items():
         if env not in os.environ:
-            print("Provide ", key, " in the environment!")
-            os.exit(1)
+            print("Provide ", env, " in the environment!")
+            sys.exit(1)
         envs[key] = os.environ[env]
     mongoengine.connect(envs["db"],
-                        username=env["username"],
-                        password=env["password"])
+                        username=envs["username"],
+                        password=envs["password"])
