@@ -7,8 +7,8 @@ import prettydate
 from urltrim import trim_url
 from urldb import connect, lookup_url, URL
 
-FORMAT = ("%(nick)s: OLD! "
-          "%(found)s posted this ~%(since)s ago (%(date)s) "
+FORMAT = ("@%(nick)s OLD! "
+          "@%(found)s posted this ~%(since)s ago (%(date)s) "
           ":feelsbadman:")
 
 if __name__ == '__main__':
